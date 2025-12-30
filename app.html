@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | FreelancerKit Pro</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/png" href="icons/icon-192.png">
+</head>
+
+<body class="app-page">
+    <!-- App Header -->
+    <header class="app-header">
+        <a href="app.html" class="logo">
+            <span class="logo-icon">📋</span>
+            <span class="logo-text">FreelancerKit<span class="pro">Pro</span></span>
+        </a>
+        <div class="user-menu">
+            <div class="user-info">
+                <div class="user-avatar" id="userAvatar">U</div>
+                <span class="user-name" id="userName">Usuário</span>
+            </div>
+            <button class="btn-logout" id="btnLogout">Sair</button>
+        </div>
+    </header>
+
+    <!-- App Layout -->
+    <div class="app-layout">
+        <!-- Sidebar -->
+        <aside class="app-sidebar">
+            <ul class="sidebar-menu">
+                <li>
+                    <button class="active" data-section="dashboard">
+                        <span class="menu-icon">🏠</span>
+                        Dashboard
+                    </button>
+                </li>
+                <li>
+                    <button data-section="propostas">
+                        <span class="menu-icon">📋</span>
+                        Propostas
+                    </button>
+                </li>
+                <li>
+                    <button data-section="contratos">
+                        <span class="menu-icon">📄</span>
+                        Contratos
+                    </button>
+                </li>
+                <li>
+                    <button data-section="recibos">
+                        <span class="menu-icon">🧾</span>
+                        Recibos
+                    </button>
+                </li>
+                <li>
+                    <button data-section="calculadora">
+                        <span class="menu-icon">💰</span>
+                        Calculadora
+                    </button>
+                </li>
+                <li>
+                    <button data-section="historico">
+                        <span class="menu-icon">📁</span>
+                        Histórico
+                    </button>
+                </li>
+                <li>
+                    <button data-section="perfil">
+                        <span class="menu-icon">⚙️</span>
+                        Meu Perfil
+                    </button>
+                </li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="app-main">
+            <div class="app-content">
+
+                <!-- Dashboard Section -->
+                <section id="dashboardSection" class="section-panel active">
+                    <h1 class="section-title">Bem-vindo, <span id="welcomeName">Usuário</span>! 👋</h1>
+                    <p class="section-description">Aqui está um resumo da sua atividade.</p>
+
+                    <div class="dashboard-stats">
+                        <div class="stat-card">
+                            <div class="stat-card-icon">📋</div>
+                            <div class="stat-card-value" id="statPropostas">0</div>
+                            <div class="stat-card-label">Propostas</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-card-icon">📄</div>
+                            <div class="stat-card-value" id="statContratos">0</div>
+                            <div class="stat-card-label">Contratos</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-card-icon">🧾</div>
+                            <div class="stat-card-value" id="statRecibos">0</div>
+                            <div class="stat-card-label">Recibos</div>
+                        </div>
+                    </div>
+
+                    <h2 style="margin-bottom: 1rem;">Ações Rápidas</h2>
+                    <div class="quick-actions">
+                        <button class="quick-action-btn" data-section="propostas">
+                            <div class="quick-action-icon">📋</div>
+                            <div class="quick-action-title">Nova Proposta</div>
+                            <div class="quick-action-desc">Criar proposta comercial</div>
+                        </button>
+                        <button class="quick-action-btn" data-section="contratos">
+                            <div class="quick-action-icon">📄</div>
+                            <div class="quick-action-title">Novo Contrato</div>
+                            <div class="quick-action-desc">Gerar contrato de serviço</div>
+                        </button>
+                        <button class="quick-action-btn" data-section="recibos">
+                            <div class="quick-action-icon">🧾</div>
+                            <div class="quick-action-title">Novo Recibo</div>
+                            <div class="quick-action-desc">Emitir recibo profissional</div>
+                        </button>
+                        <button class="quick-action-btn" data-section="calculadora">
+                            <div class="quick-action-icon">💰</div>
+                            <div class="quick-action-title">Calculadora</div>
+                            <div class="quick-action-desc">Calcular preço/hora</div>
+                        </button>
+                    </div>
+                </section>
+
+                <!-- Propostas Section -->
+                <section id="propostasSection" class="section-panel">
+                    <h1 class="section-title">📋 Gerador de Propostas</h1>
+                    <p class="section-description">Crie propostas comerciais profissionais em minutos.</p>
+
+                    <div class="form-card">
+                        <h3 class="form-card-title">Dados do Cliente</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="clienteNome">Nome do Cliente</label>
+                                <input type="text" id="clienteNome" placeholder="Nome completo ou empresa">
+                            </div>
+                            <div class="form-group">
+                                <label for="clienteEmail">Email</label>
+                                <input type="email" id="clienteEmail" placeholder="cliente@email.com">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="clienteEmpresa">Empresa (opcional)</label>
+                                <input type="text" id="clienteEmpresa" placeholder="Nome da empresa">
+                            </div>
+                            <div class="form-group">
+                                <label for="clienteTelefone">Telefone</label>
+                                <input type="tel" id="clienteTelefone" placeholder="(11) 99999-9999">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-card">
+                        <h3 class="form-card-title">Detalhes do Projeto</h3>
+                        <div class="form-group">
+                            <label for="projetoTitulo">Título do Projeto</label>
+                            <input type="text" id="projetoTitulo" placeholder="Ex: Desenvolvimento de Website">
+                        </div>
+                        <div class="form-group">
+                            <label for="projetoDescricao">Descrição dos Serviços</label>
+                            <textarea id="projetoDescricao"
+                                placeholder="Descreva detalhadamente o que será entregue..."></textarea>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="projetoValor">Valor Total (R$)</label>
+                                <input type="text" id="projetoValor" placeholder="R$ 0,00">
+                            </div>
+                            <div class="form-group">
+                                <label for="projetoPrazo">Prazo de Entrega</label>
+                                <input type="text" id="projetoPrazo" placeholder="Ex: 15 dias úteis">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="projetoPagamento">Condições de Pagamento</label>
+                                <input type="text" id="projetoPagamento" placeholder="Ex: 50% entrada + 50% na entrega">
+                            </div>
+                            <div class="form-group">
+                                <label for="projetoValidade">Validade da Proposta</label>
+                                <input type="text" id="projetoValidade" placeholder="Ex: 7 dias">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-card">
+                        <h3 class="form-card-title">Template</h3>
+                        <div class="form-group">
+                            <label for="propostaTemplate">Escolha o estilo</label>
+                            <select id="propostaTemplate">
+                                <option value="moderno">Moderno</option>
+                                <option value="classico">Clássico</option>
+                                <option value="minimalista">Minimalista</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button class="btn btn-primary" id="btnGerarProposta">
+                            Gerar Proposta PDF
+                            <span class="btn-icon">→</span>
+                        </button>
+                        <button class="btn btn-secondary" id="btnPreviewProposta">
+                            Visualizar
+                        </button>
+                    </div>
+                </section>
+
+                <!-- Contratos Section -->
+                <section id="contratosSection" class="section-panel">
+                    <h1 class="section-title">📄 Gerador de Contratos</h1>
+                    <p class="section-description">Contratos de prestação de serviço prontos e profissionais.</p>
+
+                    <div class="form-card">
+                        <h3 class="form-card-title">Dados do Contratante</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="contratanteNome">Nome/Razão Social</label>
+                                <input type="text" id="contratanteNome" placeholder="Nome completo ou empresa">
+                            </div>
+                            <div class="form-group">
+                                <label for="contratanteCpfCnpj">CPF/CNPJ</label>
+                                <input type="text" id="contratanteCpfCnpj" placeholder="000.000.000-00">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="contratanteEndereco">Endereço</label>
+                            <input type="text" id="contratanteEndereco" placeholder="Endereço completo">
+                        </div>
+                    </div>
+
+                    <div class="form-card">
+                        <h3 class="form-card-title">Objeto do Contrato</h3>
+                        <div class="form-group">
+                            <label for="contratoObjeto">Descrição dos Serviços</label>
+                            <textarea id="contratoObjeto"
+                                placeholder="Descreva detalhadamente os serviços a serem prestados..."></textarea>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="contratoValor">Valor Total (R$)</label>
+                                <input type="text" id="contratoValor" placeholder="R$ 0,00">
+                            </div>
+                            <div class="form-group">
+                                <label for="contratoPagamento">Forma de Pagamento</label>
+                                <input type="text" id="contratoPagamento" placeholder="Ex: PIX, transferência">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="contratoInicio">Data de Início</label>
+                                <input type="date" id="contratoInicio">
+                            </div>
+                            <div class="form-group">
+                                <label for="contratoFim">Data de Término</label>
+                                <input type="date" id="contratoFim">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button class="btn btn-primary" id="btnGerarContrato">
+                            Gerar Contrato PDF
+                            <span class="btn-icon">→</span>
+                        </button>
+                        <button class="btn btn-secondary" id="btnPreviewContrato">
+                            Visualizar
+                        </button>
+                    </div>
+                </section>
+
+                <!-- Recibos Section -->
+                <section id="recibosSection" class="section-panel">
+                    <h1 class="section-title">🧾 Gerador de Recibos</h1>
+                    <p class="section-description">Emita recibos profissionais para seus clientes.</p>
+
+                    <div class="form-card">
+                        <h3 class="form-card-title">Dados do Recibo</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="reciboValor">Valor Recebido (R$)</label>
+                                <input type="text" id="reciboValor" placeholder="R$ 0,00">
+                            </div>
+                            <div class="form-group">
+                                <label for="reciboData">Data</label>
+                                <input type="date" id="reciboData">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Valor por Extenso</label>
+                            <input type="text" id="reciboExtenso" readonly placeholder="Preenchido automaticamente">
+                        </div>
+                        <div class="form-group">
+                            <label for="reciboReferente">Referente a</label>
+                            <textarea id="reciboReferente" placeholder="Descreva o serviço prestado..."></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-card">
+                        <h3 class="form-card-title">Dados do Pagador</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="pagadorNome">Nome</label>
+                                <input type="text" id="pagadorNome" placeholder="Nome do pagador">
+                            </div>
+                            <div class="form-group">
+                                <label for="pagadorCpfCnpj">CPF/CNPJ</label>
+                                <input type="text" id="pagadorCpfCnpj" placeholder="000.000.000-00">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button class="btn btn-primary" id="btnGerarRecibo">
+                            Gerar Recibo PDF
+                            <span class="btn-icon">→</span>
+                        </button>
+                        <button class="btn btn-secondary" id="btnPreviewRecibo">
+                            Visualizar
+                        </button>
+                    </div>
+                </section>
+
+                <!-- Calculadora Section -->
+                <section id="calculadoraSection" class="section-panel">
+                    <h1 class="section-title">💰 Calculadora de Preços</h1>
+                    <p class="section-description">Descubra quanto cobrar por hora ou projeto.</p>
+
+                    <div class="form-card">
+                        <h3 class="form-card-title">Seus Custos Mensais</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="custoAluguel">Aluguel/Moradia (R$)</label>
+                                <input type="text" id="custoAluguel" placeholder="R$ 0,00">
+                            </div>
+                            <div class="form-group">
+                                <label for="custoInternet">Internet/Telefone (R$)</label>
+                                <input type="text" id="custoInternet" placeholder="R$ 0,00">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="custoSoftware">Softwares/Ferramentas (R$)</label>
+                                <input type="text" id="custoSoftware" placeholder="R$ 0,00">
+                            </div>
+                            <div class="form-group">
+                                <label for="custoOutros">Outros Custos (R$)</label>
+                                <input type="text" id="custoOutros" placeholder="R$ 0,00">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="salarioDesejado">Salário Líquido Desejado (R$)</label>
+                                <input type="text" id="salarioDesejado" placeholder="R$ 5.000,00">
+                            </div>
+                            <div class="form-group">
+                                <label for="horasMes">Horas Trabalhadas/Mês</label>
+                                <input type="number" id="horasMes" placeholder="160">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="margemLucro">Margem de Lucro (%)</label>
+                                <input type="number" id="margemLucro" placeholder="30">
+                            </div>
+                            <div class="form-group">
+                                <label for="impostos">Impostos MEI (%)</label>
+                                <input type="number" id="impostos" placeholder="15">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button class="btn btn-primary" id="btnCalcular">
+                            Calcular
+                            <span class="btn-icon">→</span>
+                        </button>
+                    </div>
+
+                    <div class="form-card" id="resultadoCalculo" style="display: none;">
+                        <h3 class="form-card-title">📊 Resultado</h3>
+                        <div class="dashboard-stats">
+                            <div class="stat-card">
+                                <div class="stat-card-icon">⏱️</div>
+                                <div class="stat-card-value" id="resultHora">R$ 0</div>
+                                <div class="stat-card-label">Valor/Hora Ideal</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-card-icon">📅</div>
+                                <div class="stat-card-value" id="resultDia">R$ 0</div>
+                                <div class="stat-card-label">Valor/Dia (8h)</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-card-icon">💼</div>
+                                <div class="stat-card-value" id="resultMes">R$ 0</div>
+                                <div class="stat-card-label">Faturamento/Mês</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Perfil Section -->
+                <section id="perfilSection" class="section-panel">
+                    <h1 class="section-title">⚙️ Meu Perfil</h1>
+                    <p class="section-description">Configure seus dados profissionais.</p>
+
+                    <div class="form-card">
+                        <h3 class="form-card-title">Dados Pessoais</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="perfilNome">Nome Completo</label>
+                                <input type="text" id="perfilNome" placeholder="Seu nome">
+                            </div>
+                            <div class="form-group">
+                                <label for="perfilEmail">Email</label>
+                                <input type="email" id="perfilEmail" placeholder="seu@email.com" readonly>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="perfilCpfCnpj">CPF/CNPJ</label>
+                                <input type="text" id="perfilCpfCnpj" placeholder="000.000.000-00">
+                            </div>
+                            <div class="form-group">
+                                <label for="perfilTelefone">Telefone</label>
+                                <input type="tel" id="perfilTelefone" placeholder="(11) 99999-9999">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="perfilEndereco">Endereço</label>
+                            <input type="text" id="perfilEndereco" placeholder="Endereço completo">
+                        </div>
+                    </div>
+
+                    <div class="form-card">
+                        <h3 class="form-card-title">Dados Profissionais</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="perfilProfissao">Profissão/Cargo</label>
+                                <input type="text" id="perfilProfissao" placeholder="Ex: Designer Gráfico">
+                            </div>
+                            <div class="form-group">
+                                <label for="perfilEmpresa">Nome Fantasia (opcional)</label>
+                                <input type="text" id="perfilEmpresa" placeholder="Sua empresa">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="perfilBio">Sobre você</label>
+                            <textarea id="perfilBio"
+                                placeholder="Uma breve descrição sobre você e seus serviços..."></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button class="btn btn-primary" id="btnSalvarPerfil">
+                            Salvar Alterações
+                            <span class="btn-icon">→</span>
+                        </button>
+                    </div>
+                </section>
+
+                <!-- Histórico Section -->
+                <section id="historicoSection" class="section-panel">
+                    <h1 class="section-title">📁 Histórico de Documentos</h1>
+                    <p class="section-description">Acesse seus documentos gerados anteriormente.</p>
+
+                    <div class="form-card">
+                        <div class="form-row" style="margin-bottom: 1rem;">
+                            <div class="form-group">
+                                <label for="filtroTipo">Filtrar por tipo</label>
+                                <select id="filtroTipo">
+                                    <option value="todos">Todos</option>
+                                    <option value="proposta">Propostas</option>
+                                    <option value="contrato">Contratos</option>
+                                    <option value="recibo">Recibos</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="listaDocumentos" class="documents-list">
+                        <p class="empty-message">Carregando documentos...</p>
+                    </div>
+                </section>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-database-compat.js"></script>
+
+    <!-- html2pdf -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+    <script src="firebase-config.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
