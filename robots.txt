@@ -1,0 +1,3 @@
+User-Agent: *
+Allow: /
+Sitemap: https://lucaspereira86.github.io/freelancerkitpro/sitemap.xml
